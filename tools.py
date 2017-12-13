@@ -55,11 +55,11 @@ class shd_time():
 	
 #操作数据库
 class sxs_db():
-	def __init__(self):
+	def __init__(self,db_name):
 		try:
 			self.db = pymysql.connect(host='192.168.130.203',port=9309\
 			,user='root',passwd='sxslocalhost2017'\
-			,db='sxs_vault',use_unicode=True,charset='utf8')
+			,db=db_name,use_unicode=True,charset='utf8')
 		except Exception as e:
 			print('mysql 连接失败')
 		else:
@@ -74,23 +74,28 @@ class sxs_db():
 			else:
 				self.db.commit()
 				return self.cursor.fetchall()
-			
+
+				
 if __name__ == '__main__':
+	my_db = sxs_db('sxs_loan')
+	sql = "SELECT projectNo FROM vault_loan WHERE id =1030"
+	print my_db.get_data(sql)
+	
 	#hand = handlefile('d:/')
 	#hand.read_file('11.txt')
 	#hand.write_file('22.txt','2')
 	#print hand.read_file('name.txt')[0][0]
 	#print getTimestamp()
 	
-	dt = "2016-05-05 20:28:54"
+	#dt = "2016-05-05 20:28:54"
 	
-	timestamp = 1462451334
+	#timestamp = 1462451334
 	
 	
-	sxs_time = shd_time()
-	print sxs_time.getTimestamp()
-	print sxs_time.time_tran(dt)
-	print sxs_time.tamp_tran(timestamp)
+	#sxs_time = shd_time()
+	#print sxs_time.getTimestamp()
+	#print sxs_time.time_tran(dt)
+	#print sxs_time.tamp_tran(timestamp)
 	
 	
 	
