@@ -54,6 +54,13 @@ class shd_time():
 
 	
 #操作数据库
+# 参数化sql 有 两种方式，一种是字典，另一种是 目前正在用的
+	# sql = '''
+	   # UPDATE vault_user_mobile_verify SET verify = '56' WHERE mobile = %(phone)s
+	   # '''
+	   
+	# vaule = {"phone":'18700112233'}
+	# cursor.execute(sql,vaule)
 class sxs_db():
 	def __init__(self,db_name):
 		try:
